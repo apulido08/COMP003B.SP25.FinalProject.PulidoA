@@ -10,9 +10,11 @@ namespace COMP003B.SP25.FinalProject.PulidoA.Models
         [StringLength(100)]
         public string Title { get; set; }
 
-        public int GenreId { get; set; }
+        public string Genre { get; set; }
+        
 
-        public int PlatformId { get; set; }
+        public string Platform{ get; set; }
+        
 
         public DateTime ReleaseDate { get; set; }
 

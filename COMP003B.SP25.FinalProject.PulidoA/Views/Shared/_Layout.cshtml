@@ -28,6 +28,20 @@
                     </ul>
                 </div>
             </div>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">Game Organizer</a>
+                    <div class="collapse navbar-collapse">
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link" asp-controller="Games" asp-action="Index">Games</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="Genres" asp-action="Index">Genres</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="Platforms" asp-action="Index">Platforms</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+
         </nav>
     </header>
     <div class="container">

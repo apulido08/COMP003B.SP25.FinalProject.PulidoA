@@ -1,0 +1,13 @@
+﻿@model Game
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Title</h2>
+<p><strong>Genre:</strong> @Model.Genre</p>
+<p><strong>Platform:</strong> @Model.Platform</p>
+<p><strong>Release Date:</strong> @Model.ReleaseDate.ToShortDateString()</p>
+<p><strong>Completed:</strong> @(Model.Completed ? "Yes" : "No")</p>
+

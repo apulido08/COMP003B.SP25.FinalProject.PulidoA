@@ -4,6 +4,7 @@ using COMP003B.SP25.FinalProject.PulidoA.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace COMP003B.SP25.FinalProject.PulidoA.Migrations
 {
     [DbContext(typeof(GameDbContext))]
-    partial class GameDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250513043321_RatingToGame")]
+    partial class RatingToGame
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,18 +36,10 @@ namespace COMP003B.SP25.FinalProject.PulidoA.Migrations
                     b.Property<bool>("Completed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Genre")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("GenreId")
+                    b.Property<int>("GenreId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Platform")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("PlatformId")
+                    b.Property<int>("PlatformId")
                         .HasColumnType("int");
 
                     b.Property<int>("Rating")
@@ -105,13 +100,21 @@ namespace COMP003B.SP25.FinalProject.PulidoA.Migrations
 
             modelBuilder.Entity("COMP003B.SP25.FinalProject.PulidoA.Models.Game", b =>
                 {
-                    b.HasOne("COMP003B.SP25.FinalProject.PulidoA.Models.Genre", null)
+                    b.HasOne("COMP003B.SP25.FinalProject.PulidoA.Models.Genre", "Genre")
                         .WithMany("Games")
-                        .HasForeignKey("GenreId");
+                        .HasForeignKey("GenreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("COMP003B.SP25.FinalProject.PulidoA.Models.Platform", null)
+                    b.HasOne("COMP003B.SP25.FinalProject.PulidoA.Models.Platform", "Platform")
                         .WithMany("Games")
-                        .HasForeignKey("PlatformId");
+                        .HasForeignKey("PlatformId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Genre");
+
+                    b.Navigation("Platform");
                 });
 
             modelBuilder.Entity("COMP003B.SP25.FinalProject.PulidoA.Models.Genre", b =>
