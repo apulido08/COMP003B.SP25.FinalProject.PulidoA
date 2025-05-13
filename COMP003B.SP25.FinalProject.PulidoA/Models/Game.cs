@@ -18,5 +18,7 @@ namespace COMP003B.SP25.FinalProject.PulidoA.Models
 
         public bool Completed { get; set; }
 
+        public int Rating { get; set; } // Will be added after database update is applied.
+
     }
 }
