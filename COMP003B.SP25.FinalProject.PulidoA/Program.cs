@@ -1,3 +1,6 @@
+using COMP003B.SP25.FinalProject.PulidoA.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace COMP003B.SP25.FinalProject.PulidoA
 {
     public class Program
@@ -8,6 +11,10 @@ namespace COMP003B.SP25.FinalProject.PulidoA
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<GameDbContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
             var app = builder.Build();
 
